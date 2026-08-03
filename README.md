@@ -14,18 +14,26 @@ The **Vehicle-to-Vehicle (V2V) Radar Application** is a mobile platform develope
 ## System Features
 
 * **Real-Time Spatial Detection:** Continuously processes location vectors to locate nearby participating vehicles relative to the user's position.
-* **Radar Interface:** Displays proximity vectors, target headings, and relative speed indications on a custom radar UI.
-* **Proximity Alerting:** Triggers immediate feedback upon detecting critical distance thresholds or sudden velocity changes.
-* **Peer-to-Peer Communication:** Utilizes low-latency protocols for localized data transmission.
+* **Radar Interface:** Displays proximity vectors, target headings, and relative speed indications on a custom radar UI optimized for landscape display.
+* **Proximity & Collision Alerting:** Triggers immediate feedback and continuous haptic alerts upon detecting critical distance thresholds or emergency hazard signals.
+* **Peer-to-Peer Communication:** Utilizes low-latency hardware mesh protocols for localized data transmission without reliance on cellular networks.
 
 ---
 
 ## Technical Architecture
 
-* **UI Framework:** Flutter / Dart
-* **State Management:** Provider / Riverpod / Bloc
-* **Telemetry & Sensors:** Integrated Device GPS, Compass, and Gyroscope
-* **Networking Protocol:** WebSockets / Bluetooth Low Energy (BLE) / UDP Sockets
+* **UI Framework:** Flutter / Dart (Landscape Dashboard Interface)
+* **State Management:** Reactive State Management (optimized for high-frequency telemetry)
+* **Hardware & Sensor Processing:** 
+  * Integrated Device GPS, Compass, and Gyroscope
+  * Kalman Filtering algorithm for telemetry data smoothing and noise reduction
+* **V2V Communication & Mesh Networking:**
+  * **Hardware Node:** ESP32 Microcontrollers
+  * **P2P Protocol:** ESP-NOW protocol for low-latency vehicle-to-vehicle mesh networking
+  * **Mobile Interface:** Bluetooth Serial / BLE for ESP32-to-Flutter telemetry streaming
+* **Safety & Hazard System:**
+  * Collision detection algorithm with real-time payload parsing
+  * Priority SOS emergency hazard broadcasting with haptic feedback
 
 ---
 
@@ -36,6 +44,7 @@ The **Vehicle-to-Vehicle (V2V) Radar Application** is a mobile platform develope
 * Flutter SDK (`version 3.0.0` or higher)
 * Dart SDK
 * Android Studio / Xcode configured with emulator or physical test devices
+* ESP32 Development Board (flashed with ESP-NOW V2V firmware)
 
 ### Installation and Execution
 
